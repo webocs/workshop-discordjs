@@ -12,13 +12,14 @@ const roleId = 'YOUR_ROLE_ID';
 // Managing messages reception
 discordClient.on('message', async (msg) => {
   try {
-    // Check if it's a signup message
+    // Check if it's a role assignment message
     if (msg.content === 'bot! GIVE ME A ROLE!') {
       await msg.member.roles.add(roleId);
-      await msg.channel.send(`<@${msg.member.user.id}> have your role!!`);
+      await msg.channel.send('Have your role!!');
     } else if (msg.content === 'bot! REMOVE THE ROLE!') {
+      // If it's not a role assignment, is it a remove role message?
       await msg.member.roles.remove(roleId);
-      await msg.channel.send(`<@${msg.member.user.id}> decide already! ROLE IS GONE!`);
+      await msg.channel.send('Decide already! ROLE IS GONE!');
     }
   } catch (e) {
     debugError(e);
